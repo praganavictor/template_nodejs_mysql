@@ -22,7 +22,7 @@ module.exports = {
     }
   },
 
-  async register(req, res) {
+  async registrar(req, res) {
     const { nomedeusuario, senha } = req.body;
 
     const hash = bcrypt.hashSync(senha, 10);
