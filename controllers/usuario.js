@@ -1,4 +1,6 @@
 const bcrypt = require("bcryptjs");
+const path = require("path");
+const fs = require("fs");
 
 const { Usuario } = require("../models");
 
@@ -37,6 +39,18 @@ module.exports = {
       return res.status(200).json({ usuario });
     } catch (err) {
       return res.status(400).send({ error: "Falha no registro, " + err });
+    }
+  },
+
+  async uploadpadrao(req, res) {
+    try {
+      const file = fs.readFileSync(
+        path.resolve(__dirname, "..", "tmp", `${req.file.originalname}`)
+      );
+
+      return res.status(200).json({ file });
+    } catch (err) {
+      return res.status(400).send({ error: "Falha no upload , " + err });
     }
   }
 };
