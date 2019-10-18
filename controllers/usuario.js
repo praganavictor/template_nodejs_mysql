@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const { Usuario } = require("../models");
 
 module.exports = {
-  async login(req, res) {
+  async entrar(req, res) {
     const { nomedeusuario, senha } = req.body;
 
     if (!nomedeusuario || !senha) {
@@ -18,7 +18,7 @@ module.exports = {
 
       return res.status(200).json({ usuario });
     } catch (err) {
-      return res.status(400).send({ error: "Falha ao realizar o login " + err });
+      return res.status(400).send({ error: "Falha ao realizar ao entrar " + err });
     }
   },
 
